@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TempMailBox — Free Temporary Email Address | Disposable Temp Mail</title>
+  <meta name="description" content="Get a free temporary email address instantly. TempMailBox provides disposable mailboxes to receive emails online, protect your privacy, and keep your real inbox spam-free.">
+  <link rel="canonical" href="https://tempmailbox.example.com/">
+  <meta property="og:title" content="TempMailBox — Free Temporary Email Address">
+  <meta property="og:description" content="Generate a disposable temp mail address instantly. Receive temporary emails in your browser without registration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tempmailbox.example.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TempMailBox — Free Temporary Email Address">
+  <meta name="twitter:description" content="Generate a disposable temp mail address instantly. Receive temporary emails in your browser without registration.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="header-placeholder"></div>
+
+  <main id="main-content">
+    <!-- Hero + Mail Tool -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="container">
+        <h1 id="hero-heading" class="hero-title">Temp Mail Address That Shields Your Real Mailbox</h1>
+
+        <!-- Demo Mode Banner -->
+        <div id="demo-banner" class="demo-banner" role="status" aria-live="polite" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Demo Mode — Using simulated data. Connect a backend API to receive real emails.</span>
+        </div>
+
+        <!-- Mail Interface -->
+        <div class="mail-tool card-shadow" id="mail-tool">
+          <!-- Email Address -->
+          <div class="mail-address-section">
+            <label class="section-label" for="email-address">Temporary Email Address</label>
+            <div class="address-row">
+              <input type="text" id="email-address" class="address-input" readonly aria-label="Your temporary email address">
+              <div class="address-actions">
+                <button type="button" class="btn btn-primary btn-copy" id="btn-copy-email" aria-label="Copy email address">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/></svg>
+                  <span>Copy</span>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-icon" id="btn-edit-email" aria-label="Edit email address" title="Edit address">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2"/></svg>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-icon" id="btn-refresh-mailbox" aria-label="Refresh mailbox" title="Refresh">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-icon" id="btn-delete-mailbox" aria-label="Delete mailbox" title="Delete mailbox">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="password-section">
+            <label class="section-label" for="mailbox-password">Randomly Generated Password</label>
+            <div class="password-row">
+              <input type="text" id="mailbox-password" class="password-input" readonly aria-label="Mailbox password">
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-copy-password" aria-label="Copy password">Copy</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-change-password" aria-label="Generate new password">Change</button>
+            </div>
+          </div>
+
+          <!-- Lifetime Controls -->
+          <div class="lifetime-section">
+            <span class="section-label">Email Lifetime</span>
+            <div class="lifetime-info">
+              <span id="lifetime-display" class="lifetime-display">Expires in: —</span>
+            </div>
+            <div class="lifetime-buttons" role="group" aria-label="Extend email lifetime">
+              <button type="button" class="btn btn-lifetime" data-minutes="10">+10 min</button>
+              <button type="button" class="btn btn-lifetime" data-minutes="1440">1 day</button>
+              <button type="button" class="btn btn-lifetime" data-minutes="4320">3 days</button>
+              <button type="button" class="btn btn-lifetime" data-minutes="7200">5 days</button>
+              <button type="button" class="btn btn-lifetime" data-minutes="10080">1 week</button>
+              <button type="button" class="btn btn-lifetime" data-minutes="20160">2 weeks</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inbox -->
+        <div class="inbox-container card-shadow" id="inbox-container">
+          <div class="inbox-header">
+            <h2 class="inbox-title">Inbox</h2>
+            <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-refresh-inbox" aria-label="Refresh inbox">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Refresh
+            </button>
+          </div>
+
+          <!-- Inbox List View -->
+          <div id="inbox-list-view">
+            <div id="inbox-loading" class="inbox-loading" hidden>
+              <div class="spinner" role="status"><span class="visually-hidden">Loading messages...</span></div>
+            </div>
+            <div id="inbox-empty" class="inbox-empty">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <p>No messages yet</p>
+              <span>New messages will appear here automatically.</span>
+            </div>
+            <div id="inbox-error" class="inbox-error" hidden role="alert"></div>
+            <table class="inbox-table" id="inbox-table" hidden>
+              <thead>
+                <tr>
+                  <th scope="col">From</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col" class="col-time">Time</th>
+                </tr>
+              </thead>
+              <tbody id="inbox-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- Message Reader View -->
+          <div id="message-reader" class="message-reader" hidden>
+            <div class="reader-header">
+              <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-back-inbox" aria-label="Back to inbox">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Back to Inbox
+              </button>
+              <button type="button" class="btn btn-outline-danger btn-sm" id="btn-delete-message" aria-label="Delete message">Delete</button>
+            </div>
+            <article class="reader-content">
+              <h3 id="reader-subject" class="reader-subject"></h3>
+              <dl class="reader-meta">
+                <div><dt>From</dt><dd id="reader-from"></dd></div>
+                <div><dt>To</dt><dd id="reader-to"></dd></div>
+                <div><dt>Date</dt><dd id="reader-date"></dd></div>
+              </dl>
+              <div id="reader-body" class="reader-body"></div>
+              <div id="reader-attachments" class="reader-attachments" hidden>
+                <h4>Attachments</h4>
+                <ul id="attachments-list"></ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="content-section" id="intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <h2 id="intro-heading">Temp Mail: The Temporary Email That Shields Your Real Inbox</h2>
+        <p>Welcome to TempMailBox, a free temporary email service designed to safeguard your privacy and keep your real mailbox clean. In today's digital world, protecting your personal information matters more than ever — and that's where disposable email addresses come in.</p>
+        <p>With TempMailBox, you regain control over your online interactions. Our platform provides temporary email addresses that shield your real identity, ensuring your private data stays confidential. Say goodbye to spam, unwanted subscriptions, and promotional clutter in your primary inbox.</p>
+        <p>Using our simple interface, generating a temp email address takes seconds. Whether you're on desktop or mobile, the process is seamless — no technical expertise or registration required. TempMailBox is completely free with no hidden charges.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="content-section features-section" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <h2 id="features-heading">Features and Benefits</h2>
+        <p class="section-subtitle">Protecting your original mailbox with our temp mail service.</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-number">1</div>
+            <h3>Privacy Protection</h3>
+            <p>Keep your personal information confidential. Use temporary addresses for sign-ups, services, and discussions without revealing your real identity.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">2</div>
+            <h3>Easy to Use</h3>
+            <p>Creating a temp mail address is simple and straightforward. Generate an address in seconds from any device — desktop or mobile.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">3</div>
+            <h3>Self-Destructing Emails</h3>
+            <p>Temporary emails have a predetermined lifespan. After expiration, addresses become inaccessible — no manual cleanup needed.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">4</div>
+            <h3>Versatility</h3>
+            <p>Test apps, post anonymous reviews, sign up for newsletters, or protect your identity across various online interactions.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">5</div>
+            <h3>Spam Control</h3>
+            <p>Use disposable addresses to avoid cluttering your primary inbox with promotional emails and unwanted newsletters.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-number">6</div>
+            <h3>Free Service</h3>
+            <p>Enjoy all the benefits of temporary email without any cost. No hidden charges, no subscriptions — privacy should be accessible to everyone.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="content-section how-section" id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <h2 id="how-heading">How Our Temp Mail Service Works</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-icon" aria-hidden="true">1</div>
+            <h3>Visit TempMailBox</h3>
+            <p>Open your browser and navigate to TempMailBox.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon" aria-hidden="true">2</div>
+            <h3>Auto-Generated Address</h3>
+            <p>A temporary email address is created automatically when you open the site.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon" aria-hidden="true">3</div>
+            <h3>Copy &amp; Use</h3>
+            <p>Copy the address and use it wherever a temporary email is needed.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon" aria-hidden="true">4</div>
+            <h3>Receive Messages</h3>
+            <p>Incoming emails appear in your inbox automatically and in real time.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon" aria-hidden="true">5</div>
+            <h3>Read in Browser</h3>
+            <p>Open and read messages directly in your browser — no extra software needed.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-icon" aria-hidden="true">6</div>
+            <h3>Automatic Expiration</h3>
+            <p>The mailbox eventually expires and all associated data is deleted.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="content-section testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <h2 id="testimonials-heading">User Testimonials</h2>
+        <div class="testimonials-grid">
+          <blockquote class="testimonial-card">
+            <div class="testimonial-avatar" aria-hidden="true">SD</div>
+            <p>"As a frequent app tester, TempMailBox has been a game-changer. I can sign up for apps without worrying about my personal information being shared."</p>
+            <footer>— Sarah D.</footer>
+          </blockquote>
+          <blockquote class="testimonial-card">
+            <div class="testimonial-avatar" aria-hidden="true">JM</div>
+            <p>"I love how simple and user-friendly TempMailBox is. I posted a review anonymously without creating a separate email account."</p>
+            <footer>— John M.</footer>
+          </blockquote>
+          <blockquote class="testimonial-card">
+            <div class="testimonial-avatar" aria-hidden="true">ES</div>
+            <p>"Managing newsletters used to be a nightmare. Now I sign up for deals without cluttering my primary inbox. Thank you, TempMailBox!"</p>
+            <footer>— Emily S.</footer>
+          </blockquote>
+          <blockquote class="testimonial-card">
+            <div class="testimonial-avatar" aria-hidden="true">DR</div>
+            <p>"TempMailBox has become essential for protecting my privacy online. It's reliable, convenient, and free — what more could I ask for?"</p>
+            <footer>— David R.</footer>
+          </blockquote>
+          <blockquote class="testimonial-card">
+            <div class="testimonial-avatar" aria-hidden="true">SH</div>
+            <p>"I stumbled upon TempMailBox when searching for a way to avoid spam. It's been a game-changer for my online interactions."</p>
+            <footer>— Samantha H.</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy & Security -->
+    <section class="content-section privacy-section" id="privacy-security" aria-labelledby="privacy-heading">
+      <div class="container">
+        <h2 id="privacy-heading">Privacy and Security</h2>
+        <p>We understand the importance of privacy and security in the digital age. Here's how we prioritize your protection:</p>
+        <div class="privacy-grid">
+          <div class="privacy-item">
+            <h3>No Personal Information Required</h3>
+            <p>TempMailBox does not require personal information or account creation. Generate and use temp mail addresses without revealing personal details.</p>
+          </div>
+          <div class="privacy-item">
+            <h3>Automatic Address Generation</h3>
+            <p>A temporary email address is automatically generated when you visit, eliminating manual input and reducing accidental disclosure.</p>
+          </div>
+          <div class="privacy-item">
+            <h3>Temporary Email Lifespan</h3>
+            <p>Each address has a predefined lifespan. After expiration, the address becomes inaccessible, minimizing unwanted access to your communications.</p>
+          </div>
+          <div class="privacy-item">
+            <h3>Spam and Unwanted Emails</h3>
+            <p>Use a disposable address to keep your primary inbox free from promotional messages and newsletters.</p>
+          </div>
+          <div class="privacy-item">
+            <h3>Data Deletion</h3>
+            <p>All emails associated with a temporary address are deleted after expiration, ensuring communications are not stored indefinitely.</p>
+          </div>
+          <div class="privacy-item">
+            <h3>Responsible Use</h3>
+            <p>We encourage ethical use of our service. TempMailBox is designed for legitimate privacy protection, not for abuse or illegal activity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services & Links -->
+    <section class="content-section links-section" id="related-links">
+      <div class="container">
+        <div class="links-grid">
+          <div>
+            <h2>Other Temp Mail Services</h2>
+            <ul class="external-links">
+              <li><a href="https://temp-mail.org/" target="_blank" rel="noopener noreferrer">Temp-Mail.org</a></li>
+              <li><a href="https://www.guerrillamail.com/" target="_blank" rel="noopener noreferrer">Guerrilla Mail</a></li>
+              <li><a href="https://10minutemail.com/" target="_blank" rel="noopener noreferrer">10 Minute Mail</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Useful Links</h2>
+            <ul class="external-links">
+              <li><a href="https://www.eff.org/pages/privacy" target="_blank" rel="noopener noreferrer">EFF — Online Privacy Guide</a></li>
+              <li><a href="https://privacyguides.org/" target="_blank" rel="noopener noreferrer">Privacy Guides</a></li>
+              <li><a href="https://www.consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams" target="_blank" rel="noopener noreferrer">FTC — Avoid Phishing Scams</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Edit Email Modal -->
+  <div class="modal fade" id="editEmailModal" tabindex="-1" aria-labelledby="editEmailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="editEmailModalLabel">Edit Email Address</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="edit-mailbox-name" class="form-label">Preferred mailbox name (3–18 characters)</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="edit-mailbox-name" maxlength="18" autocomplete="off" aria-describedby="edit-name-help edit-name-error">
+            <span class="input-group-text" id="edit-domain-suffix">@tempmailbox.local</span>
+          </div>
+          <div id="edit-name-help" class="form-text">Letters, numbers, dots, hyphens, and underscores only.</div>
+          <div id="edit-name-error" class="invalid-feedback" role="alert"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="btn-confirm-edit">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="deleteConfirmModalLabel">Delete Mailbox</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this mailbox? All messages will be permanently removed and a new address will be generated.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="btn-confirm-delete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/mail.js" defer></script>
+  <script src="js/inbox.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/theme.js" defer></script>
+</body>
+</html>
